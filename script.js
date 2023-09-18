@@ -2,12 +2,18 @@
 function createPassword() {
   // 桁数の要素を取得
   const numberElement = document.getElementById("number");
+  const number = numberElement.value;
+
+  if ((number < 8) || (20 < number)) {
+    alert("桁数は8〜20の値を設定してください。");
+    return;
+  }
 
   // ランダムなパスワードを作成
   let result = "";
   do {
     result = "";
-    for(let i = 0; i < numberElement.value; i++) {
+    for(let i = 0; i < number; i++) {
       result += getOneRandomStr(result);
     }
   } while (!isOkPass(result));
