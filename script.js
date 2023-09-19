@@ -4,8 +4,8 @@ function createPassword() {
   const numberElement = document.getElementById("number");
   const number = numberElement.value;
 
-  if ((number < 8) || (20 < number)) {
-    alert("桁数は8〜20の値を設定してください。");
+  if (!isNumber(number) || ((number < 8) || (20 < number))) {
+    alert("桁数は8〜20の半角数字を設定してください。");
     return;
   }
 
@@ -35,6 +35,14 @@ function getOneRandomStr(result) {
   } while (result.indexOf(oneStr) >= 0);
 
   return oneStr;
+}
+
+// 数字かどうかを判定する関数
+function isNumber(number) {
+  if (number == "")  return false;
+  if (isNaN(number)) return false;
+
+  return true;
 }
 
 // パスワードがOKかを判定する関数
